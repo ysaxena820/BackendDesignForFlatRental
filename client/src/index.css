@@ -31,6 +31,7 @@ code {
 }
 
 .home-bg-image {
+  animation: bounce 3s infinite;
   background-image: url('./assets/HomeImage.svg');
   z-index: 2;
   background-size: 100% 100%;
@@ -53,4 +54,33 @@ code {
   font-style: normal;
   font-weight: 600;
   line-height: 50px;
+}
+
+
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+    /* Adjust this value to control the bounce height */
+  }
+}
+
+
+.bg-sign {
+  background-image: url(../public/background.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bg-gradient {
+  background-image: url(../public/signInGradient.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
