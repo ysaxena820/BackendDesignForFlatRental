@@ -1,11 +1,43 @@
-import logo from './logo.svg';
+import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom';
+import { ChakraProvider, theme } from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './Pages/Home';
+import Layout from './components/Layout';
+import SignIn from './Pages/SignIn'
+import Rent from './Pages/Rent';
 import './App.css';
+import SignUp from './Pages/Signup';
+
+
+// Create a new theme object
+
+
+
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path='/' element={<Layout/>}>
+    <Route index element={<Home />} />
+    <Route path="rent" element={<Rent />} />
+    <Route path="sell" element={<Home />} />
+    <Route path="forum" element={<Home />} />
+    <Route path="about" element={<Home />} />
+    <Route path="login" element={<SignIn />} />
+    <Route path='signup' element={<SignUp/>}/>
+  </Route>
+))
+
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <Home/>
+    <div>
+      <RouterProvider router={router} />  
+    
+
+      <ToastContainer />
+
     </div>
   );
 }
