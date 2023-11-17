@@ -11,6 +11,7 @@ import './App.css';
 import SignUp from './Pages/Signup';
 import Forum from './Pages/Forum'
 import PropertyDetail from './Pages/PropertyDetail';
+import Publish from './Pages/Publish';
 
 
 // Create a new theme object
@@ -22,7 +23,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route index element={<Home />} />
     <Route path="rent" element={<Rent />} />
     <Route path="rent/:id" element={<PropertyDetail/>}/>
-    <Route path="publish" element={<Home />} />
+    <Route path="publish" element={<Publish />} />
     <Route path="forum" element={<Forum />} />
     <Route path="about" element={<Home />} />
     <Route path="login" element={<SignIn />} />
