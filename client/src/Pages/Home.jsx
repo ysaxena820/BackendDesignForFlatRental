@@ -3,6 +3,7 @@ import VectorImage from '../assets/HomeVector.png'
 import Navbar from './Navbar'
 import Box from '../components/Box'
 import { data } from 'autoprefixer'
+import Dropdown from '../components/Dropdown'
 function Home() {
 
     const customerData = [{
@@ -28,10 +29,8 @@ function Home() {
     return (
         <div className='home min-h-screen flex flex-col align-center'>
             <div className='home-grid flex flex-col items-center object-cover grow'>
-                <Navbar />
-
                 <div className='home-bg-image absolute top-36 left-32'>
-                    <div className='text-2xl font-jost text-[50px] leading-[50px] font-semibold'>Find <br /> <span className='home__newHome'>New Home</span><br /> Like Never<br /> Before</div>
+                    <div className='text-2xl font-jost text-[50px] leading-[50px] ml-20 font-semibold'>Find <br /> <span className='home__newHome'>New Home</span><br /> Like Never<br /> Before</div>
                 </div>
 
             </div>
@@ -45,7 +44,6 @@ function Home() {
                     )
                 })}
             </div>
-
         </div>
     )
 }
