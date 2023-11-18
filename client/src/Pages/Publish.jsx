@@ -7,14 +7,17 @@ import { FaUpload } from 'react-icons/fa'
 
 const Publish = () => {
     const [propertyData, setPropertyData] = useState({
+        imageUrl: '',
         title: '',
         location: '',
         type: '',
         price: '',
         contact: ''
     });
+
     const [imageData, setImageData] = useState(null);
     const [imageName, setImageName] = useState("");
+    const [submitted, setSubmitted] = useState(false);
     const fileInputRef = useRef(null);
 
     const handleChange = (e) => {
@@ -34,6 +37,10 @@ const Publish = () => {
                 const base64ImageData = e.target.result;
                 setImageData(base64ImageData);
                 setImageName(file.name)
+                setPropertyData({
+                    ...propertyData,
+                    imageUrl: base64ImageData,
+                });
             };
 
             reader.readAsDataURL(file);
@@ -46,20 +53,25 @@ const Publish = () => {
 
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(propertyData); // You can send the propertyData to an API or perform other actions here
-        // Add your axios.post request here to handle the property data
-
-        // Example:
-        // axios.post('http://localhost:3002/property', propertyData)
-        //   .then((response) => {
-        //     toast.success('Property published successfully');
-        //     console.log('Property published:', response.data.message);
-        //   })
-        //   .catch((error) => {
-        //     toast.error('Error publishing property');
-        //     console.error('Error publishing property:', error);
-        //   });
+        if (!submitted) {
+            e.preventDefault();
+            console.log(propertyData); // You can send the propertyData to an API or perform other actions here
+            // Add your axios.post request here to handle the property data
+            console.log('type', typeof propertyData.price);
+            axios.post('http://localhost:3002/property', propertyData)
+                .then((response) => {
+                    setSubmitted(true);
+                    toast.success('Property published successfully');
+                    console.log('Property published:', response.data.message);
+                })
+                .catch((error) => {
+                    toast.error('Error publishing property');
+                    console.error('Error publishing property:', error);
+                });
+        }
+        else {
+            toast.error('You can Publish for only once try after some time')
+        }
     };
 
     return (
