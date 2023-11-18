@@ -22,7 +22,7 @@ function PropertyDetail() {
                     >&larr; <span>Back</span></Link>
                     <Box borderWidth='1px' borderRadius='lg' overflow='hidden' className=' bg-cyan-950 flex flex-row max-w-[1400px]'>
 
-                        <Image src={property.imageUrl} alt={property.imageAlt} className='max-w-[70%]' />
+                        <Image src={property.imageUrl} alt={property.imageAlt} className='max-w-[70%] max-h-[500px]' />
                         <Box p='6'>
                             <Box display='flex' alignItems='baseline'>
                                 <Badge borderRadius='full' px='2' colorScheme='teal'>
