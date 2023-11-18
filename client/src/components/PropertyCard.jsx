@@ -1,89 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { Box, Badge, Image, Grid, GridItem, ScaleFade, Slide } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons'
-import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify';
+import axios from 'axios'
 
 function PropertyCard() {
 
 
-    // https://ibb.co/0hHt6Bg
-
-    const propertyList = [{
-        id: 1,
-        imageUrl: 'https://bit.ly/2Z4KKcF',
-        imageAlt: 'Rear view of modern home with pool',
-        location: 'Darpan',
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        type: 'Flat',
-        price: 3900,
-        reviewCount: 34,
-        rating: 4,
-    },
-    {
-        id: 2,
-        imageUrl: 'https://i.ibb.co/kGgZ1Zv/452311982-O-1697875180375.jpg',
-        imageAlt: 'Rear view of modern home with pool',
-        location: 'Bhago Majra',
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        type: 'PG',
-        price: 14900,
-        reviewCount: 34,
-        rating: 4,
-    },
-    {
-        id: 3,
-        imageUrl: 'https://i.ibb.co/JcHndgb/448262314-O-1696041109099.jpg" alt="448262314-O-1696041109099',
-        imageAlt: 'Rear view of modern home with pool',
-        location: 'Shivjot',
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        type: 'Flat',
-        price: 5000,
-        reviewCount: 34,
-        rating: 4,
-    },
-
-    {
-        id: 4,
-        imageUrl: 'https://i.ibb.co/QDNy45p/449999468-O-1696846975857.jpg" alt="449999468-O-1696846975857',
-        imageAlt: 'Rear view of modern home with pool',
-        location: 'Omega City',
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        type: 'Flat',
-        price: 3500,
-        reviewCount: 34,
-        rating: 4,
-    },
-    {
-        id: 5,
-        imageUrl: 'https://i.ibb.co/ydVTz7k/452305856-O-1697876155598.jpg" alt="452305856-O-1697876155598',
-        imageAlt: 'Rear view of modern home with pool',
-        location: 'Modern Valley',
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        type: 'PG',
-        price: 3600,
-        reviewCount: 34,
-        rating: 4,
-    },
-    {
-        id: 6,
-        imageUrl: 'https://i.ibb.co/sy8HN50/453330572-O-1698405964290.jpg" alt="453330572-O-1698405964290',
-        imageAlt: 'Rear view of modern home with pool',
-        location: 'GBP Crest',
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        type: 'PG',
-        price: 4000,
-        reviewCount: 34,
-        rating: 4,
-    }]
-
-    const [selectedId, setSelectedId] = useState(null)
-    const [filters, setFilters] = useState(false);
-    const { location, price } = useSelector((state) => state.rent);
+    const [propertyList, setPropertyList] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
     const locationFilter = searchParams.get("location")
     const typeFilter = searchParams.get("type")
     const priceFilter = searchParams.get("price")
+
+    useEffect(() => {
+        axios.get('http://localhost:3002/property/getAll').then(res => {
+            console.log('here is response', res.data.propertyList);
+            setPropertyList(res.data.propertyList);
+        }).catch(
+            err => {
+                console.error('Error fetching Data:', err);
+                toast.error("There is some problem in fetching data check your internet connection!!")
+
+            }
+        )
+
+    }, [])
+
 
     if (locationFilter || priceFilter || typeFilter) {
         // console.log(price)
