@@ -38,7 +38,12 @@ function SignUp() {
                 setAccountCreated(true);
             })
             .catch((error) => {
-                toast.error('Error creating account');
+                if (error.response.status === 401)
+                    toast.error('User Already Exist!! Change Username')
+
+                else
+                    toast.error('Error creating account');
+
                 console.error('Error creating account:', error);
             });
     };
