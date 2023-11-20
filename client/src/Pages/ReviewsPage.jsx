@@ -16,7 +16,7 @@ const ReviewsPage = ({ productId, onReviewSubmit }) => {
         fetchReviewData();
     }, [id])
     const fetchReviewData = async () => {
-        const response = await axios.post('http://localhost:3002/reviews/getById', {
+        const response = await axios.post('https://flat-apartment.onrender.com/reviews/getById', {
             id
         });
         if (response.status === 200) {
@@ -35,7 +35,7 @@ const ReviewsPage = ({ productId, onReviewSubmit }) => {
 
             try {
                 // Send review data to the backend
-                const response = await axios.post('http://localhost:3002/reviews/submit', {
+                const response = await axios.post('https://flat-apartment.onrender.com/reviews/submit', {
                     id,
                     username: localStorage.getItem("user"),
                     message,

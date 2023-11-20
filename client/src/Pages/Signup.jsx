@@ -31,7 +31,7 @@ function SignUp() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData); // You can send the formData to an API or perform other actions here
-        axios.post('http://localhost:3002/signup', formData)
+        axios.post('https://flat-apartment.onrender.com/signup', formData)
             .then((response) => {
                 toast.success('Account created successfully');
                 console.log('Account created:', response.data.message);

@@ -9,7 +9,7 @@ const Replies = () => {
     const { id } = useParams();
 
     const addReply = () => {
-        fetch("http://localhost:3002/create/reply", {
+        fetch("https://flat-apartment.onrender.com/create/reply", {
             method: "POST",
             body: JSON.stringify({
                 id,
@@ -37,7 +37,7 @@ const Replies = () => {
 
     useEffect(() => {
         const fetchReplies = () => {
-            fetch("http://localhost:3002/thread/replies", {
+            fetch("https://flat-apartment.onrender.com/thread/replies", {
                 method: "POST",
                 body: JSON.stringify({
                     id,

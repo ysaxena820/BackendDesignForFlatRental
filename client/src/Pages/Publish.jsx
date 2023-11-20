@@ -58,7 +58,7 @@ const Publish = () => {
             console.log(propertyData); // You can send the propertyData to an API or perform other actions here
             // Add your axios.post request here to handle the property data
             console.log('type', typeof propertyData.price);
-            axios.post('http://localhost:3002/property', propertyData)
+            axios.post('https://flat-apartment.onrender.com/property', propertyData)
                 .then((response) => {
                     setSubmitted(true);
                     toast.success('Property published successfully');

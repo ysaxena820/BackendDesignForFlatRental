@@ -15,7 +15,7 @@ function PropertyCard() {
     const priceFilter = searchParams.get("price")
 
     useEffect(() => {
-        axios.get('http://localhost:3002/property/getAll').then(res => {
+        axios.get('https://flat-apartment.onrender.com/property/getAll').then(res => {
             console.log('here is response', res.data.propertyList);
             setPropertyList(res.data.propertyList);
         }).catch(
