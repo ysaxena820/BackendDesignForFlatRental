@@ -15,10 +15,13 @@ const Forum = () => {
             if (!localStorage.getItem("token")) {
                 navigate("/");
             } else {
-                console.log('useEffect')
                 fetch("http://localhost:3002/all/threads")
                     .then((res) => res.json())
-                    .then((data) => setThreadList(data.threads))
+                    .then((data) => {
+                        setThreadList(data.threads)
+                        console.log('threads= ', data.threads)
+                    })
+
                     .catch((err) => console.error(err));
             }
         };
@@ -84,7 +87,7 @@ const Forum = () => {
                 {threadList.map((thread) => (
                     <div className='thread__item text-white' key={thread.id}>
                         <p className="text-xl">{thread.title}</p>
-                    <div className='react__container'>
+                        <div className='react__container'>
                             <Likes numberOfLikes={thread.likes.length} threadId={thread.id} />
                             <Comments
                                 numberOfComments={thread.replies.length}
