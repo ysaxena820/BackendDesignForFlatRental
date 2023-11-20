@@ -2,11 +2,11 @@ import React from "react";
 
 const Likes = ({ numberOfLikes, threadId }) => {
 	const handleLikeFunction = () => {
-		fetch("http://localhost:4000/api/thread/like", {
+		fetch("http://localhost:3002/thread/like", {
 			method: "POST",
 			body: JSON.stringify({
 				threadId,
-				userId: localStorage.getItem("_id"),
+				userName: localStorage.getItem("user"),
 			}),
 			headers: {
 				"Content-Type": "application/json",
