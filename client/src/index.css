@@ -186,7 +186,7 @@ a {
 	align-items: center;
 	margin-right: 25px;
 	color: white;
-	background-color:#000f30;
+	background-color: #000f30;
 }
 
 .likesBtn {
@@ -256,4 +256,34 @@ a {
 	margin-left: 15px;
 	cursor: pointer;
 	border-radius: 3px;
+}
+
+
+/* YourComponent.css */
+
+.scroll-container {
+	/* Set a specific height or max-height for your container */
+	max-height: 12rem;
+	/* Example value, adjust as needed */
+
+	/* Enable scrolling */
+	overflow-y: auto;
+
+	/* Optional: Customize the appearance of the scrollbar */
+	/* For Webkit browsers (Chrome/Safari) */
+	&::-webkit-scrollbar {
+		width: 12px;
+		/* Adjust as needed */
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #888;
+		/* Adjust as needed */
+	}
+
+	/* For Firefox */
+	scrollbar-color: #888;
+	/* Adjust as needed */
+	scrollbar-width: thin;
+	/* Adjust as needed */
 }
