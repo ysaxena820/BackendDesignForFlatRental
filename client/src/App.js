@@ -14,6 +14,7 @@ import PropertyDetail from './Pages/PropertyDetail';
 import Publish from './Pages/Publish';
 import Replies from './Pages/Replies'
 import ReviewsPage  from './Pages/ReviewsPage';
+import About from './Pages/About';
 // Create a new theme object
 
 
@@ -26,7 +27,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="publish" element={<Publish />} />
     <Route path="forum" element={<Forum />} />
     <Route path='/:id/replies' element={<Replies/>}/>
-    <Route path="about" element={<Home />} />
+    <Route path="about" element={<About />} />
     <Route path="login" element={<SignIn />} />
     <Route path='signup' element={<SignUp/>}/>
     <Route path='reviewPage' element={<ReviewsPage/>}/>
