@@ -13,7 +13,7 @@ import Forum from './Pages/Forum'
 import PropertyDetail from './Pages/PropertyDetail';
 import Publish from './Pages/Publish';
 import Replies from './Pages/Replies'
-
+import ReviewsPage  from './Pages/ReviewsPage';
 // Create a new theme object
 
 
@@ -29,6 +29,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="about" element={<Home />} />
     <Route path="login" element={<SignIn />} />
     <Route path='signup' element={<SignUp/>}/>
+    <Route path='reviewPage' element={<ReviewsPage/>}/>
   </Route>
 ))
 
