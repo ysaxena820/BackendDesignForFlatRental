@@ -84,7 +84,7 @@ const generateID = () => Math.random().toString(36).substring(2, 10);
 
 // Allow requests from a specific origin (your React app's origin)
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000','https://flat-apartment-rent.vercel.app']
 };  
 
 // Define a username and password for authentication
