@@ -8,7 +8,7 @@ function Navbar() {
     const { token, username } = useSelector((state) => state.auth);
     const [callToggleDropdown, setCallToggleDropdown] = useState(0);
 
-    const navItems = ['Home', 'Rent', 'Publish', 'Forum', 'About']
+    const navItems = ['Home', 'Rent', 'Publish', 'Forum']
     const authToken = localStorage.getItem('token')
     const authUsername = localStorage.getItem('user')
     const [loggedIn, setLoggedIn] = useState(false);
@@ -22,7 +22,7 @@ function Navbar() {
 
 
     return (
-        <nav className='nav flex bg-[#FFFFFF29] w-[550px] h-[52px] rounded-3xl font-jost mt-10 justify-center gap-8 items-center text-[16px]'>
+        <nav className='nav flex bg-[#FFFFFF29] w-[500px] h-[52px] rounded-3xl font-jost mt-10 justify-center gap-8 items-center text-[16px]'>
             {navItems.map((item, index) => {
                 return (<NavLink key={index} className='transition ease-in-out delay-150 duration-200 hover:scale-110 hover:text-cyan-500' to={`${item == 'Home' ? '/' : item}`}>{item}</NavLink>)
             })}
