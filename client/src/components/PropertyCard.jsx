@@ -52,7 +52,7 @@ function PropertyCard() {
                     return (
                         <GridItem key={property.id}>
                             <Link to={`/rent/${property.id}`}
-                                state={{ search: `?${searchParams}`, type: typeFilter }}
+                                state={{ search: `?${searchParams}`, currentHome: property }}
                             >
                                 <ScaleFade initialScale={0.5} in={true}>
                                     <Box maxW='350px' borderWidth='1px' borderRadius='lg' overflow='hidden' className='bg-cyan-950'>
