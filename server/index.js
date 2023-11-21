@@ -10,6 +10,7 @@ const port = 3002;
 
 const propertyList = [{
   id: 1,
+  user: 'demo',
   imageUrl: 'https://bit.ly/2Z4KKcF',
   imageAlt: 'Rear view of modern home with pool',
   location: 'Darpan',
@@ -21,6 +22,7 @@ const propertyList = [{
 },
 {
   id: 2,
+  user: 'admin',
   imageUrl: 'https://i.ibb.co/kGgZ1Zv/452311982-O-1697875180375.jpg',
   imageAlt: 'Rear view of modern home with pool',
   location: 'Bhago Majra',
@@ -32,6 +34,7 @@ const propertyList = [{
 },
 {
   id: 3,
+  user: 'admin',
   imageUrl: 'https://i.ibb.co/JcHndgb/448262314-O-1696041109099.jpg" alt="448262314-O-1696041109099',
   imageAlt: 'Rear view of modern home with pool',
   location: 'Shivjot',
@@ -44,6 +47,7 @@ const propertyList = [{
 
 {
   id: 4,
+  user: 'admin',
   imageUrl: 'https://i.ibb.co/QDNy45p/449999468-O-1696846975857.jpg" alt="449999468-O-1696846975857',
   imageAlt: 'Rear view of modern home with pool',
   location: 'Omega City',
@@ -55,6 +59,7 @@ const propertyList = [{
 },
 {
   id: 5,
+  user: 'admin',
   imageUrl: 'https://i.ibb.co/ydVTz7k/452305856-O-1697876155598.jpg" alt="452305856-O-1697876155598',
   imageAlt: 'Rear view of modern home with pool',
   location: 'Modern Valley',
@@ -66,6 +71,7 @@ const propertyList = [{
 },
 {
   id: 6,
+  user: 'admin',
   imageUrl: 'https://i.ibb.co/sy8HN50/453330572-O-1698405964290.jpg" alt="453330572-O-1698405964290',
   imageAlt: 'Rear view of modern home with pool',
   location: 'GBP Crest',
@@ -265,11 +271,12 @@ app.post("/create/reply", async (req, res) => {
 });
 
 app.post('/property', (req,res) => {
-  const propertyData = req.body;
+  const {propertyData, username} = req.body;
   // console.log('successfully uploaded', propertyData)
   const newProperty = {
     ...propertyData,
     id: propertyList.length + 1,
+    user: username,
     reviewCount: Math.floor(Math.random() * (20 - 1 + 1)) + 1,
     rating: Math.floor(Math.random() * (5-1 +1) )+1,
     price: Number(propertyData.price),
@@ -286,6 +293,29 @@ app.get("/property/getAll", (req,res) => {
   res.json({propertyList: propertyList})
 })
 
+app.post('/property/getById', (req,res) => {
+  const {username} = req.body;
+  const result = propertyList.filter((property) => property.user === username);
+  console.log("successfully accessed!")
+  res.json({propertyList: result})
+})
+app.post('/property/deleteById', (req,res) => {
+  const {id} = req.body;
+  // Find the index of the object with the matching id
+const indexToDelete = propertyList.findIndex(item => item.id === id);
+
+// Check if the index is valid (not -1)
+if (indexToDelete !== -1) {
+  // Use splice to remove the element at the found index
+  propertyList.splice(indexToDelete, 1);
+  console.log('Element deleted:', propertyList);
+  res.json({propertyList: propertyList})
+  // res.json('Successfully Deleted')
+} else {
+  console.log('Element with id', idToDelete, 'not found.');
+  res.status(404).json('Element not found');
+}
+})
 
 app.post('/reviews/submit', (req,res) => {
   const {id, username, message} = req.body;

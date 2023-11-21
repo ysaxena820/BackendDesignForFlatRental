@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { clearAuth } from '../redux/features/authSlice';
+import { NavLink } from 'react-router-dom';
 
 const Dropdown = ({ callToggleDropdown }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,12 +30,13 @@ const Dropdown = ({ callToggleDropdown }) => {
                 >
                     <ul>
                         <li>
-                            <a
 
+                            <NavLink
                                 className="block px-4 py-2 text-gray-800 hover:bg-blue-100 cursor-pointer"
+                                to='/profile'
                             >
                                 Profile
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
                             <a
