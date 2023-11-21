@@ -129,7 +129,7 @@ function Profile() {
                                                     />
                                                 ))}
                                             <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                                                {property.reviewCount} reviews
+                                                {property.reviewCount} ratings
                                             </Box>
                                         </Box>
                                         <span onClick={() => handleDelete(property.id)} ><Button colorScheme='teal' size='xs'>Delete</Button></span>

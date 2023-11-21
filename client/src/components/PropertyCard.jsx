@@ -102,7 +102,7 @@ function PropertyCard() {
                                                         />
                                                     ))}
                                                 <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                                                    {property.reviewCount} reviews
+                                                    {property.reviewCount} ratings
                                                 </Box>
                                             </Box>
                                         </Box>
