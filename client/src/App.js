@@ -15,6 +15,7 @@ import Publish from './Pages/Publish';
 import Replies from './Pages/Replies'
 import ReviewsPage  from './Pages/ReviewsPage';
 import About from './Pages/About';
+import Profile from './Pages/Profile';
 // Create a new theme object
 
 
@@ -31,6 +32,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="login" element={<SignIn />} />
     <Route path='signup' element={<SignUp/>}/>
     <Route path='reviewPage' element={<ReviewsPage/>}/>
+    <Route path='profile' element={<Profile/>}/>
   </Route>
 ))
 
