@@ -6,7 +6,6 @@ function Rent() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [search, setSearch] = useState(null);
     const [toggleSearch, setToggleSearch] = useState(true);
-
     const handleSearch = (formData) => {
         // setSearchParams({ location: formData.location });
         // setSearchParams({ price: formData.price });
@@ -18,7 +17,7 @@ function Rent() {
     };
 
     return (
-        <div className='mt-32 flex flex-col items-center'>
+        <div className='mt-32 flex flex-col items-center min-h-[80vh]'>
             <Search onSearch={handleSearch} />
             <div className='mt-10' onClick={() => setToggleSearch(!toggleSearch)}><PropertyCard /></div>
         </div>

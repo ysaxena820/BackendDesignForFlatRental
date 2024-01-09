@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { Box, Badge, Image, Grid, GridItem, ScaleFade, Slide } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons'
+import { FaSpinner } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import axios from 'axios'
 
@@ -9,12 +10,14 @@ function PropertyCard() {
 
 
     const [propertyList, setPropertyList] = useState([]);
+    const [loading, setLoading] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams();
     const locationFilter = searchParams.get("location")
     const typeFilter = searchParams.get("type")
     const priceFilter = searchParams.get("price")
 
     useEffect(() => {
+        setLoading(true)
         axios.get('https://flat-apartment.onrender.com/property/getAll').then(res => {
             console.log('here is response', res.data.propertyList);
             setPropertyList(res.data.propertyList);
@@ -25,10 +28,17 @@ function PropertyCard() {
 
             }
         )
-
+        setLoading(false)
     }, [])
 
+    if (loading) {
+        return (
+            <div className='self-center absolute top-1/2 left-1/2'>
+                <FaSpinner className='animate-spin bg-transparent text-5xl mt-auto' />
 
+            </div>
+        )
+    }
     if (locationFilter || priceFilter || typeFilter) {
         // console.log(price)
         // console.log(location)
