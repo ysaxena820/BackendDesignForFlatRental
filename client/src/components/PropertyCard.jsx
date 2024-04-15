@@ -18,7 +18,7 @@ function PropertyCard() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('https://flat-apartment.onrender.com/property/getAll').then(res => {
+        axios.get('https://flat-apartment-rental.vercel.app/property/getAll').then(res => {
             console.log('here is response', res.data.propertyList);
             setPropertyList(res.data.propertyList);
         }).catch(
@@ -27,8 +27,9 @@ function PropertyCard() {
                 toast.error("There is some problem in fetching data check your internet connection!!")
 
             }
-        )
-        setLoading(false)
+        ).finally(() => {
+            setLoading(false);
+        });
     }, [])
 
     if (loading) {

@@ -18,18 +18,24 @@ const ReviewsPage = ({ productId, onReviewSubmit }) => {
         fetchReviewData();
     }, [id])
     const fetchReviewData = async () => {
-        setLoading(true)
-        const response = await axios.post('https://flat-apartment.onrender.com/reviews/getById', {
-            id
-        });
-        if (response.status === 200) {
-            console.log(response.data);
-            setReviewList(response.data.review);
+        try {
+            setLoading(true);
+            const response = await axios.post('https://flat-apartment-rental.vercel.app/reviews/getById', {
+                id
+            });
+
+            if (response.status === 200) {
+                console.log(response.data);
+                setReviewList(response.data.review);
+            } else {
+                console.log('Failed to fetch');
+            }
+        } catch (error) {
+            console.error('Error fetching review data:', error);
+            toast.error("There is some problem in fetching review data. Check your internet connection!!");
+        } finally {
+            setLoading(false);
         }
-        else {
-            console.log('Failed to fetch');
-        }
-        setLoading(false)
     }
     const handleSubmit = async () => {
         if (!localStorage.getItem("user")) {
@@ -38,7 +44,7 @@ const ReviewsPage = ({ productId, onReviewSubmit }) => {
         else {
             try {
                 // Send review data to the backend
-                const response = await axios.post('https://flat-apartment.onrender.com/reviews/submit', {
+                const response = await axios.post('https://flat-apartment-rental.vercel.app/reviews/submit', {
                     id,
                     username: localStorage.getItem("user"),
                     message,
@@ -69,7 +75,7 @@ const ReviewsPage = ({ productId, onReviewSubmit }) => {
                                     <hr className='mb-2 mt-1' />
                                 </div>
                             ))
-                        ) : <p>No Reviews here... </p>)
+                        ) : <p>No Reviews here...</p>)
                 }
             </div>
             <div className='flex gap-2 '>

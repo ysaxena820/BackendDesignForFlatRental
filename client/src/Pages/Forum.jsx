@@ -15,7 +15,7 @@ const Forum = () => {
             if (!localStorage.getItem("token")) {
                 navigate("/");
             } else {
-                fetch("https://flat-apartment.onrender.com/all/threads")
+                fetch("https://flat-apartment-rental.vercel.app/all/threads")
                     .then((res) => res.json())
                     .then((data) => {
                         setThreadList(data.threads)
@@ -29,7 +29,7 @@ const Forum = () => {
     }, [navigate]);
 
     const handleSecureRequest = () => {
-        axios.get('https://flat-apartment.onrender.com/secure', {
+        axios.get('https://flat-apartment-rental.vercel.app/secure', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -44,7 +44,7 @@ const Forum = () => {
 
 
     const createThread = () => {
-        axios.post("https://flat-apartment.onrender.com/create/thread", {
+        axios.post("https://flat-apartment-rental.vercel.app/create/thread", {
             thread: thread,
             token: token,
         }, {

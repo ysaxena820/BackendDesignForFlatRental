@@ -9,7 +9,7 @@ const Replies = () => {
     const { id } = useParams();
 
     const addReply = () => {
-        fetch("https://flat-apartment.onrender.com/create/reply", {
+        fetch("https://flat-apartment-rental.vercel.app/create/reply", {
             method: "POST",
             body: JSON.stringify({
                 id,
@@ -37,7 +37,7 @@ const Replies = () => {
 
     useEffect(() => {
         const fetchReplies = () => {
-            fetch("https://flat-apartment.onrender.com/thread/replies", {
+            fetch("https://flat-apartment-rental.vercel.app/thread/replies", {
                 method: "POST",
                 body: JSON.stringify({
                     id,

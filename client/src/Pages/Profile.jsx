@@ -8,7 +8,7 @@ function Profile() {
     const [propertyList, setPropertyList] = useState([]);
     const [deleted, setDeleted] = useState(false)
     useEffect(() => {
-        axios.post('https://flat-apartment.onrender.com/property/getById', {
+        axios.post('https://flat-apartment-rental.vercel.app/property/getById', {
             username: localStorage.getItem("user"),
         },
             {
@@ -43,7 +43,7 @@ function Profile() {
             console.log('some error occured!')
         }
         else {
-            axios.post('https://flat-apartment.onrender.com/property/deleteById', {
+            axios.post('https://flat-apartment-rental.vercel.app/property/deleteById', {
                 id: id,
             },
                 {

@@ -18,7 +18,7 @@ function SignIn() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('https://flat-apartment.onrender.com/login', null, {
+            const response = await axios.post('https://flat-apartment-rental.vercel.app/login', null, {
                 auth: {
                     username: user,
                     password: password,
