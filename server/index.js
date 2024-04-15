@@ -343,5 +343,4 @@ app.post('/reviews/getById', (req, res) => {
   }
 })
 
-
-
+module.exports = app;
